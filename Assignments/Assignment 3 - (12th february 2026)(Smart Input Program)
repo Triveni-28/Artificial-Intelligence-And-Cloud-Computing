@@ -1,0 +1,38 @@
+def get_category(age):
+    if age < 13:
+        return "Child"
+    elif age < 20:
+        return "Teenager"
+    elif age < 60:
+        return "Adult"
+    else:
+        return "Senior"
+
+def get_valid_age():
+    while True:
+        value = input("Enter your age: ")
+        if value.isdigit():
+            return int(value)
+        else:
+            print("Invalid age, try again")
+
+def main():
+    name = input("Enter your name: ").strip()
+    while not name:
+        name = input("Enter your name: ").strip()
+
+    age = get_valid_age()
+
+    hobby = input("Enter your hobby: ").strip()
+    while not hobby:
+        hobby = input("Enter your hobby: ").strip()
+
+    category = get_category(age)
+
+    print("\nPersonalized Message\n")
+    print(f"Hello {name}!")
+    print(f"You are a {category}.")
+    print(f"It's great that you enjoy {hobby}. Keep it up!")
+
+if __name__ == "__main__":
+    main()
