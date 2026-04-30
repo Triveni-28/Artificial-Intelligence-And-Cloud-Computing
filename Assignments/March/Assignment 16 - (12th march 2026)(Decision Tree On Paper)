@@ -1,0 +1,46 @@
+from sklearn.tree import DecisionTreeClassifier, export_text
+import pandas as pd
+
+def create_dataset():
+    data = {
+        "Weather": ["Sunny", "Sunny", "Overcast", "Rainy", "Rainy", "Rainy", "Overcast", "Sunny"],
+        "Temperature": ["Hot", "Hot", "Hot", "Mild", "Cool", "Cool", "Mild", "Cool"],
+        "Humidity": ["High", "High", "High", "High", "Normal", "Normal", "Normal", "High"],
+        "Wind": ["Weak", "Strong", "Weak", "Weak", "Weak", "Strong", "Strong", "Weak"],
+        "Play": ["No", "No", "Yes", "Yes", "Yes", "No", "Yes", "No"]
+    }
+    return pd.DataFrame(data)
+
+def encode_data(df):
+    df_encoded = df.copy()
+    for col in df_encoded.columns:
+        df_encoded[col] = df_encoded[col].astype("category").cat.codes
+    return df_encoded
+
+def train_model(df):
+    X = df.drop("Play", axis=1)
+    y = df["Play"]
+    model = DecisionTreeClassifier()
+    model.fit(X, y)
+    return model
+
+def show_tree(model, feature_names):
+    tree_rules = export_text(model, feature_names=feature_names)
+    print("\nDecision Tree:\n")
+    print(tree_rules)
+
+def predict(model, df):
+    sample = df.drop("Play", axis=1).iloc[0].values.reshape(1, -1)
+    result = model.predict(sample)
+    print("\nSample Prediction:", "Play" if result[0] == 1 else "Don't Play")
+
+def main():
+    df = create_dataset()
+    print("\nDataset:\n", df)
+    df_encoded = encode_data(df)
+    model = train_model(df_encoded)
+    show_tree(model, list(df_encoded.drop("Play", axis=1).columns))
+    predict(model, df_encoded)
+
+if __name__ == "__main__":
+    main()
