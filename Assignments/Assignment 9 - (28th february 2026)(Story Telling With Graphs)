@@ -1,0 +1,35 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = {
+    "Category": ["Food", "Transport", "Entertainment", "Shopping", "Bills"],
+    "Amount": [5000, 2000, 3000, 4000, 3500]
+}
+
+df = pd.DataFrame(data)
+
+plt.figure()
+plt.bar(df["Category"], df["Amount"])
+plt.title("Monthly Expenses - Bar Chart")
+plt.xlabel("Category")
+plt.ylabel("Amount")
+plt.show()
+
+plt.figure()
+plt.pie(df["Amount"], labels=df["Category"], autopct='%1.1f%%')
+plt.title("Expense Distribution - Pie Chart")
+plt.show()
+
+plt.figure()
+plt.hist(df["Amount"], bins=5)
+plt.title("Expense Distribution - Histogram")
+plt.xlabel("Amount")
+plt.ylabel("Frequency")
+plt.show()
+
+print("\nData Story:")
+print("The data shows that food and shopping take the largest share of expenses.")
+print("Transport has the lowest spending compared to other categories.")
+print("Most expenses fall in the mid to high range based on the histogram.")
+print("Spending is unevenly distributed, with some categories dominating.")
+print("Overall, managing high-expense categories can help in saving money.")
