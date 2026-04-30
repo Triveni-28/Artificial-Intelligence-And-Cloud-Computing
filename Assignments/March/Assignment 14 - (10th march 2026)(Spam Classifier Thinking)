@@ -1,0 +1,44 @@
+def show_features():
+    features = [
+        "Email content text",
+        "Spam keywords frequency",
+        "Sender email address",
+        "Number of links",
+        "Number of attachments",
+        "Uppercase word ratio"
+    ]
+    print("\nFeatures:")
+    for f in features:
+        print("-", f)
+
+def show_data_needed():
+    data = [
+        "Labeled spam and non-spam emails",
+        "Historical email dataset",
+        "User feedback data",
+        "Metadata like sender and timestamps"
+    ]
+    print("\nData Needed:")
+    for d in data:
+        print("-", d)
+
+def show_mistakes():
+    mistakes = [
+        "False positives",
+        "False negatives",
+        "Biased training data",
+        "Overfitting",
+        "Concept drift"
+    ]
+    print("\nPossible Mistakes:")
+    for m in mistakes:
+        print("-", m)
+
+def main():
+    print("Spam Classifier Design")
+    show_features()
+    show_data_needed()
+    show_mistakes()
+
+if __name__ == "__main__":
+    main()
