@@ -1,0 +1,66 @@
+import pandas as pd
+import numpy as np
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+def create_dataset():
+    data = {
+        "CustomerID": list(range(1, 16)),
+        "AnnualIncome": [15, 16, 17, 18, 20, 45, 48, 50, 52, 55, 70, 75, 78, 80, 85],
+        "SpendingScore": [39, 81, 6, 77, 40, 60, 65, 55, 50, 62, 10, 15, 12, 18, 20]
+    }
+    return pd.DataFrame(data)
+
+def preprocess(df):
+    X = df[["AnnualIncome", "SpendingScore"]]
+    scaler = StandardScaler()
+    return scaler.fit_transform(X)
+
+def apply_kmeans(X, k=3):
+    model = KMeans(n_clusters=k, random_state=42)
+    labels = model.fit_predict(X)
+    return model, labels
+
+def visualize(df):
+    plt.figure()
+    for cluster in sorted(df["Cluster"].unique()):
+        subset = df[df["Cluster"] == cluster]
+        plt.scatter(subset["AnnualIncome"], subset["SpendingScore"], label=f"Cluster {cluster}")
+    plt.xlabel("Annual Income")
+    plt.ylabel("Spending Score")
+    plt.title("Customer Segmentation")
+    plt.legend()
+    plt.show()
+
+def describe(df):
+    print("\nCustomer Groups:\n")
+    groups = df.groupby("Cluster")[["AnnualIncome", "SpendingScore"]].mean()
+    for cluster, row in groups.iterrows():
+        income = round(row["AnnualIncome"], 2)
+        score = round(row["SpendingScore"], 2)
+        print(f"Cluster {cluster}: Avg Income={income}, Avg Spending Score={score}")
+        if income < 30 and score < 40:
+            print("Low income, low spending\n")
+        elif income < 60 and score > 55:
+            print("Medium income, high spending\n")
+        elif income > 65 and score < 25:
+            print("High income, low spending\n")
+        else:
+            print("Mixed behavior customers\n")
+
+def main():
+    df = create_dataset()
+    print("\nDataset:\n", df)
+
+    X_scaled = preprocess(df)
+    model, labels = apply_kmeans(X_scaled, 3)
+
+    df["Cluster"] = labels
+    print("\nClustered Data:\n", df)
+
+    visualize(df)
+    describe(df)
+
+if __name__ == "__main__":
+    main()
