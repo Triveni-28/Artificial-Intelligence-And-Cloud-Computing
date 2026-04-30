@@ -1,0 +1,23 @@
+import pandas as pd
+
+df = pd.read_csv("data.csv")
+
+print("Top Rows:\n")
+print(df.head())
+
+numeric_cols = df.select_dtypes(include="number")
+max_col = numeric_cols.max().idxmax()
+max_val = numeric_cols.max().max()
+
+print("\nColumn with Highest Value:")
+print(max_col, "->", max_val)
+
+print("\nMissing Values Count:")
+print(df.isnull().sum())
+
+print("\nInsights:")
+print("1. Dataset contains", df.shape[0], "rows and", df.shape[1], "columns.")
+print("2. Column", max_col, "has the highest recorded value.")
+print("3. Missing values are present in some columns and need handling.")
+print("4. Numeric columns show variation in scale and distribution.")
+print("5. Data can be cleaned and normalized for better analysis.")
