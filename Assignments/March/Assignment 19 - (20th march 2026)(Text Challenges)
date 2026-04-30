@@ -1,0 +1,77 @@
+import re
+import string
+
+sentences = [
+    "Heyyy brooo 😂😂 what's up??",
+    "I canttt belieev this!!! 😱",
+    "lol that was sooo funny 🤣🤣",
+    "gonna go now brb ttyl",
+    "Thisss is amaznggg 😍",
+    "idk what u mean 😅",
+    "omggg that's gr8!!!",
+    "heyyyyy wassup dudeee",
+    "c u soon 👍👍",
+    "plzzz help meee 😭",
+    "this is sooo coool 😎",
+    "noooo wayyy!!!",
+    "im soooo tireddd 😴",
+    "hahaha that joke was lit 🔥",
+    "wat r u doin rn?",
+    "thnks a lottt 😊",
+    "yessss finallyyyy!!! 🎉",
+    "okkkk got ittt",
+    "soo happpyyy right now 😁",
+    "why u lateee???"
+]
+
+slang_dict = {
+    "lol": "laughing out loud",
+    "brb": "be right back",
+    "ttyl": "talk to you later",
+    "idk": "i don't know",
+    "u": "you",
+    "gr8": "great",
+    "c": "see",
+    "plz": "please",
+    "plzzz": "please",
+    "wat": "what",
+    "r": "are",
+    "rn": "right now",
+    "thnks": "thanks"
+}
+
+def detect_issues(text):
+    slang = [word for word in text.lower().split() if word in slang_dict]
+    emojis = re.findall(r"[^\w\s,]", text)
+    typos = [word for word in text.split() if re.search(r"(.)\1{2,}", word.lower())]
+    return slang, emojis, typos
+
+def preprocess(text):
+    text = text.lower()
+    for key, value in slang_dict.items():
+        text = re.sub(r"\b" + key + r"\b", value, text)
+    text = re.sub(r"(.)\1{2,}", r"\1\1", text)
+    text = re.sub(r"[^\w\s]", "", text)
+    return text
+
+def main():
+    print("\nText Challenges Analysis\n")
+    for i, sentence in enumerate(sentences, 1):
+        slang, emojis, typos = detect_issues(sentence)
+        cleaned = preprocess(sentence)
+
+        print(f"{i}. Original: {sentence}")
+        print("   Slang:", slang)
+        print("   Emojis:", emojis)
+        print("   Typos:", typos)
+        print("   Cleaned:", cleaned, "\n")
+
+    print("Preprocessing Needed:")
+    print("1. Convert text to lowercase")
+    print("2. Replace slang with proper words")
+    print("3. Remove or handle emojis and special characters")
+    print("4. Correct repeated character typos")
+    print("5. Normalize text for better ML performance")
+
+if __name__ == "__main__":
+    main()
