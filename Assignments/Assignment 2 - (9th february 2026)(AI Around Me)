@@ -1,0 +1,51 @@
+import json
+
+apps = [
+    {"name": "Google Maps", "description": "Predicts traffic and suggests optimal routes using real-time and historical data"},
+    {"name": "YouTube", "description": "Recommends videos based on watch history, preferences, and user interactions"},
+    {"name": "Gmail", "description": "Filters spam and categorizes emails using learned behavioral patterns"},
+    {"name": "Amazon", "description": "Suggests products using recommendation systems trained on user activity"},
+    {"name": "Instagram", "description": "Ranks and displays posts based on predicted user engagement"},
+    {"name": "Google Assistant", "description": "Uses speech recognition and NLP to process and respond to voice commands"},
+    {"name": "Netflix", "description": "Recommends movies and shows based on viewing behavior and ratings"},
+    {"name": "Spotify", "description": "Creates personalized playlists using listening habits and song features"},
+    {"name": "Face Unlock", "description": "Authenticates users using facial recognition and computer vision"},
+    {"name": "Google Photos", "description": "Organizes images using object detection and facial recognition"}
+]
+
+def display_apps(data):
+    print("\nAI Around Me\n")
+    for i, app in enumerate(data, 1):
+        print(f"{i}. {app['name']}")
+        print(f"   {app['description']}\n")
+
+def save_to_file(data, filename):
+    with open(filename, "w") as f:
+        json.dump(data, f, indent=4)
+
+def load_from_file(filename):
+    with open(filename, "r") as f:
+        return json.load(f)
+
+while True:
+    print("1. Display AI Applications")
+    print("2. Save to File")
+    print("3. Load from File")
+    print("4. Exit")
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        display_apps(apps)
+    elif choice == "2":
+        save_to_file(apps, "ai_apps.json")
+        print("Saved successfully\n")
+    elif choice == "3":
+        try:
+            apps = load_from_file("ai_apps.json")
+            print("Loaded successfully\n")
+        except:
+            print("File not found\n")
+    elif choice == "4":
+        break
+    else:
+        print("Invalid choice\n")
