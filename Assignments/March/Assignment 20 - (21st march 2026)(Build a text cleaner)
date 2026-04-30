@@ -1,0 +1,33 @@
+import re
+import string
+
+stopwords = {
+    "a","an","the","is","are","was","were","in","on","at","to","for","of","and","or",
+    "but","if","then","with","as","by","from","this","that","it","be","has","have","had",
+    "i","you","he","she","they","we","my","your","his","her","their","our"
+}
+
+sentences = [
+    "This is an Example sentence, with Punctuation!",
+    "I am learning Python, and it is amazing.",
+    "The quick brown fox jumps over the lazy dog.",
+    "Data Science is the future of technology.",
+    "We are testing the Text Cleaner program."
+]
+
+def clean_text(text):
+    text = text.lower()
+    text = text.translate(str.maketrans("", "", string.punctuation))
+    words = text.split()
+    words = [word for word in words if word not in stopwords]
+    return " ".join(words)
+
+def main():
+    print("\nText Cleaner Output\n")
+    for i, sentence in enumerate(sentences, 1):
+        cleaned = clean_text(sentence)
+        print(f"{i}. Original: {sentence}")
+        print(f"   Cleaned: {cleaned}\n")
+
+if __name__ == "__main__":
+    main()
