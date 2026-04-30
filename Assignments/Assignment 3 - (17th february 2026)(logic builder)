@@ -1,0 +1,29 @@
+def fizz_buzz():
+    fizz = 0
+    buzz = 0
+    fizzbuzz = 0
+
+    for i in range(1, 51):
+        if i % 3 == 0 and i % 5 == 0:
+            print("FizzBuzz")
+            fizzbuzz += 1
+        elif i % 3 == 0:
+            print("Fizz")
+            fizz += 1
+        elif i % 5 == 0:
+            print("Buzz")
+            buzz += 1
+        else:
+            print(i)
+
+    return fizz, buzz, fizzbuzz
+
+def main():
+    f, b, fb = fizz_buzz()
+    print("\nCounts")
+    print(f"Fizz: {f}")
+    print(f"Buzz: {b}")
+    print(f"FizzBuzz: {fb}")
+
+if __name__ == "__main__":
+    main()
