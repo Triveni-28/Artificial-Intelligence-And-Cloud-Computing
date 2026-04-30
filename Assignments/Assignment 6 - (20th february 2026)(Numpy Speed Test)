@@ -1,0 +1,24 @@
+import time
+import numpy as np
+
+n = 1000000
+
+start = time.time()
+py_list = [i for i in range(n)]
+py_result = [x * 2 for x in py_list]
+end = time.time()
+python_time = end - start
+
+start = time.time()
+np_array = np.arange(n)
+np_result = np_array * 2
+end = time.time()
+numpy_time = end - start
+
+print("Python List Time:", python_time)
+print("NumPy Array Time:", numpy_time)
+
+print("\nObservations:")
+print("1. NumPy operations are significantly faster due to vectorization.")
+print("2. Python lists use loops, which are slower for large datasets.")
+print("3. NumPy uses optimized C-based implementation for better performance.")
