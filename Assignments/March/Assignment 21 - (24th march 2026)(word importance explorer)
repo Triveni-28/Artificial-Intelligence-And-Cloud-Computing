@@ -1,0 +1,43 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+documents = [
+    "Machine learning is a field of artificial intelligence",
+    "Artificial intelligence and machine learning are closely related",
+    "Deep learning is a subset of machine learning",
+    "Data science uses machine learning for predictions",
+    "Artificial intelligence is transforming industries"
+]
+
+def compute_tfidf(docs):
+    vectorizer = TfidfVectorizer(stop_words='english')
+    X = vectorizer.fit_transform(docs)
+    feature_names = vectorizer.get_feature_names_out()
+    return X, feature_names
+
+def get_top_keywords(X, feature_names, n=3):
+    results = []
+    for i in range(X.shape[0]):
+        row = X[i].toarray().flatten()
+        indices = row.argsort()[::-1][:n]
+        keywords = [(feature_names[idx], round(row[idx], 3)) for idx in indices]
+        results.append(keywords)
+    return results
+
+def main():
+    X, feature_names = compute_tfidf(documents)
+    top_keywords = get_top_keywords(X, feature_names)
+
+    print("\nTF-IDF Top Keywords\n")
+    for i, keywords in enumerate(top_keywords, 1):
+        print(f"Document {i}:")
+        for word, score in keywords:
+            print(f"  {word} -> {score}")
+        print()
+
+    print("Explanation:")
+    print("TF-IDF highlights important words in each document based on frequency and uniqueness.")
+    print("Words that appear often in one document but less in others get higher scores.")
+    print("This helps in identifying key topics and relevant terms in text data.")
+
+if __name__ == "__main__":
+    main()
