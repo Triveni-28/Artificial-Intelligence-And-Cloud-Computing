@@ -1,0 +1,45 @@
+import re
+
+positive_words = {
+    "good","great","amazing","awesome","excellent","fantastic","love","loved",
+    "like","liked","wonderful","best","enjoyed","nice","super","brilliant"
+}
+
+negative_words = {
+    "bad","worst","boring","poor","terrible","awful","hate","hated",
+    "dislike","disliked","waste","slow","dull","horrible","disappointing"
+}
+
+reviews = [
+    "The movie was amazing and I loved it",
+    "It was a boring film and a waste of time",
+    "Great acting and wonderful story",
+    "The plot was dull and very slow",
+    "An excellent and fantastic experience"
+]
+
+def clean_text(text):
+    text = text.lower()
+    text = re.sub(r"[^\w\s]", "", text)
+    return text.split()
+
+def analyze_sentiment(words):
+    pos = sum(1 for w in words if w in positive_words)
+    neg = sum(1 for w in words if w in negative_words)
+    if pos > neg:
+        return "Positive"
+    elif neg > pos:
+        return "Negative"
+    else:
+        return "Neutral"
+
+def main():
+    print("\nMovie Review Sentiment Analysis\n")
+    for i, review in enumerate(reviews, 1):
+        words = clean_text(review)
+        sentiment = analyze_sentiment(words)
+        print(f"{i}. Review: {review}")
+        print(f"   Sentiment: {sentiment}\n")
+
+if __name__ == "__main__":
+    main()
