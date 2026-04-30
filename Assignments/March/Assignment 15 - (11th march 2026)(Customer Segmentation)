@@ -1,1 +1,46 @@
+import pandas as pd
+import numpy as np
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
 
+def create_dataset():
+    data = {
+        "CustomerID": list(range(1, 11)),
+        "AnnualIncome": [15, 16, 17, 50, 52, 54, 80, 82, 85, 87],
+        "SpendingScore": [39, 81, 6, 77, 40, 76, 6, 94, 3, 92]
+    }
+    return pd.DataFrame(data)
+
+def perform_clustering(df):
+    X = df[["AnnualIncome", "SpendingScore"]]
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    model = KMeans(n_clusters=3, random_state=42)
+    df["Cluster"] = model.fit_predict(X_scaled)
+    return df, model
+
+def describe_clusters(df):
+    print("\nCustomer Groups:\n")
+    groups = df.groupby("Cluster")[["AnnualIncome", "SpendingScore"]].mean()
+    for cluster, values in groups.iterrows():
+        income = round(values["AnnualIncome"], 2)
+        score = round(values["SpendingScore"], 2)
+        print(f"Cluster {cluster}: Avg Income={income}, Avg Spending Score={score}")
+        if income < 30 and score < 40:
+            print("Low income, low spending customers\n")
+        elif income < 60 and score > 60:
+            print("Mid income, high spending customers\n")
+        elif income > 70 and score < 50:
+            print("High income, low spending customers\n")
+        else:
+            print("High income, high spending customers\n")
+
+def main():
+    df = create_dataset()
+    print("\nDataset:\n", df)
+    df, model = perform_clustering(df)
+    print("\nClustered Data:\n", df)
+    describe_clusters(df)
+
+if __name__ == "__main__":
+    main()
