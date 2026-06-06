@@ -1,0 +1,29 @@
+""" Assignment (30/03/2026) """
+''''
+Weak vs Strong Prompts.
+1. Resume.
+Weak Prompt: Write a resume.
+Strong Prompt: Write a professional resume for a computer science student skilled in Python, machine learning, and data analysis. Include projects and internship experience.
+2. Business Idea.
+Weak Prompt: Give a business idea.
+Strong Prompt: Suggest a low-budget business idea for a college student in India related to AI or online services, including cost and profit potential.
+3. Study Plan.
+Weak Prompt: Make a study plan.
+Strong Prompt: Create a 4-week study plan to learn machine learning basics, including Python, regression, classification, and mini projects with a daily schedule.
+Comparison Table.
+Feature	Weak Prompt	Strong Prompt
+Clarity	Low	High
+Details	Missing	Specific
+Output Quality	Basic	Detailed
+Control	Less	More
+Conclusion.
+
+Strong prompts produce better and more useful results.
+
+A good prompt should include:
+
+Context.
+Goal.
+Constraints.
+Details.
+''''
