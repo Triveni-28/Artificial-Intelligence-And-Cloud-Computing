@@ -1,0 +1,42 @@
+""" Assignment of 2nd march """
+
+1. College
+Problem: Student Performance Prediction
+Input: Attendance, assignment marks, study hours, previous exam scores
+Output: Predicted final grade or pass/fail prediction
+2. Healthcare
+Problem: Disease Risk Prediction
+Input: Age, symptoms, medical history, blood test results
+Output: Probability of a specific disease (e.g., diabetes risk)
+3. Shopping
+Problem: Product Recommendation System
+Input: User browsing history, previous purchases, product ratings
+Output: Recommended products for the user
+4. College
+Problem: Student Dropout Prediction
+Input: Attendance, grades, participation, financial background
+Output: Prediction whether a student is likely to drop out
+5. Healthcare
+Problem: Medical Image Diagnosis
+Input: Medical images such as X-rays or CT scans
+Output: Detection or classification of diseases
+6. Shopping
+Problem: Demand Prediction for Products
+Input: Past sales data, season, promotions, customer trends
+Output: Predicted future demand for products
+7. College
+Problem: Course Recommendation System
+Input: Student interests, previous courses, grades
+Output: Suggested courses suitable for the student
+8. Healthcare
+Problem: Patient Readmission Prediction
+Input: Patient history, treatment records, hospital stay details
+Output: Prediction whether the patient will be readmitted
+9. Shopping
+Problem: Price Prediction for Products
+Input: Product features, brand, demand, previous prices
+Output: Estimated product price
+10. Healthcare
+Problem: Heart Disease Prediction
+Input: Age, cholesterol level, blood pressure, lifestyle habits
+Output: Risk level of heart disease.

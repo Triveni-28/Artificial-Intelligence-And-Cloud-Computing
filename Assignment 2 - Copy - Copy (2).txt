@@ -1,0 +1,34 @@
+""" Assignment of 9th Feb """
+
+"""
+1.Google Maps
+Uses machine learning to analyze traffic data from many users and predict the fastest route.
+
+2.YouTube Recommendations
+ML studies the videos you watch, like, and search to recommend similar content.
+
+3.Email Spam Filter
+Machine learning identifies patterns in spam emails and automatically moves them to the spam folder.
+
+4.Voice Assistants (Google Assistant / Siri)
+ML converts speech to text and understands user commands to perform tasks.
+
+5.Netflix Recommendations
+Uses ML algorithms to suggest movies and shows based on viewing history.
+
+6.Online Shopping Suggestions (Amazon / Flipkart)
+ML analyzes purchase history and browsing behavior to recommend products.
+
+7.Face Unlock in Smartphones
+AI uses facial recognition models to compare your face with stored data for authentication.
+
+8.Google Search Results
+Machine learning ranks web pages based on relevance to your search query.
+
+9.Instagram Feed and Ads
+ML studies your likes, follows, and interactions to personalize posts and advertisements.
+
+10.Autocorrect in Keyboard Apps
+ML predicts and corrects spelling mistakes based on language patterns and past typing behavior.
+
+""""
