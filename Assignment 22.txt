@@ -1,0 +1,20 @@
+""" Assignment (27/03/2026) """
+''''
+Word Pairs and Similarity.
+Word Pair	            Similarity       Explanation
+Car – Automobile	      High	         They have the same meaning (synonyms).
+Happy – Joyful	          High	         They express similar emotions.
+Teacher – Student	      Medium	     They are related but have different roles.
+Dog – Animal	          Medium	     One is a category of the other.
+Hot – Cold	              Low	         They are opposites.
+    
+Explanation.
+
+Semantic similarity refers to how close the meanings of two words are.
+
+Words can be grouped based on their level of similarity:
+
+Synonyms have high similarity because they mean the same thing.
+Related words have medium similarity because they are connected but not identical.
+Opposite words have low similarity because their meanings are completely different.
+'''

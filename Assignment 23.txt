@@ -1,0 +1,11 @@
+""" Assignment (27/03/2026) """
+''''
+Prompt: Explain like I am 5 but also like I am a PhD student.
+Output: The explanation becomes mixed and confusing because it tries to match two very different levels at the same time.
+Prompt: Give the answer without using any vowels.
+Output: The AI struggles or produces incomplete and unclear answers due to the restriction.
+Prompt: Say something true and false at the same time.
+Output: This creates a logical contradiction, which is difficult to resolve clearly.
+Prompt: Write a sentence that contradicts itself.
+Output: This sentence is false.
+'''
